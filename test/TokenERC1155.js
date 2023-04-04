@@ -21,7 +21,7 @@ describe("TokenERC1155 Contract", function () {
 
     const {tokenERC1155, addr1, addr2 } = await loadFixture(deployOneContract);
     //mint
-    await tokenERC1155.connect(addr1).mint(addr2.address,100,"0x");
+    await tokenERC1155.connect(addr1).mint('http://www.mytokenlocation.com',addr2.address,100,"0x");
     const id=await tokenERC1155.getTokenIdCounter()
     expect(await tokenERC1155.balanceOf(addr2.address,id)).to.equal(100);
     //burn
