@@ -21,11 +21,11 @@ describe("TokenERC1155 Contract", function () {
 
     const {tokenERC1155, addr1, addr2 } = await loadFixture(deployOneContract);
     //mint
-    await tokenERC1155.connect(addr1).mint('http://www.mytokenlocation.com',addr2.address,100,"0x");
+    await tokenERC1155.connect(addr1).mint('https://gateway.pinata.cloud/ipfs/QmemMMYzY6U4QtESJro7VqTN5r4kmHgoogj6bdcvWLPEGN',addr2.address,100,"0x");
     const id=await tokenERC1155.getTokenIdCounter()
     expect(await tokenERC1155.balanceOf(addr2.address,id)).to.equal(100);
     //burn
-    await tokenERC1155.connect(addr2).burn(addr2.address,id,50)
+    await tokenERC1155.connect(addr2).burn(id,50)
     expect(await tokenERC1155.balanceOf(addr2.address,id)).to.equal(50);
   });
 });
